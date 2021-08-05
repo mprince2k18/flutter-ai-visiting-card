@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:visiting_card/helpers/validation_error_message.dart';
 import 'package:visiting_card/models/contact_model.dart';
+import 'package:visiting_card/providers/contact_provider.dart';
 
 class AddNewContact extends StatefulWidget {
   static final String routeName = '/add_new_contact';
@@ -163,6 +164,10 @@ class _AddNewContactState extends State<AddNewContact> {
           emailAddress: _contactEmailController.text,
           webSite: _contactWebsiteController.text,
           streetAddress: _contactAddressController.text);
+
+      final provider = contactProvider();
+      provider.addContact(contact);
+      Navigator.pop(context);
     }
   }
 }
