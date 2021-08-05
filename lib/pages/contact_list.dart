@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:visiting_card/pages/add_new_contact.dart';
 import 'package:visiting_card/providers/contact_provider.dart';
 
@@ -11,18 +12,23 @@ class ContactList extends StatefulWidget {
 
 class _ContactListState extends State<ContactList> {
 
-  final provider = contactProvider();
+  late contactProvider _contactProvider;
+  @override
+  void didChangeDependencies() {
+    _contactProvider = Provider.of <contactProvider>(context);
+    _contactProvider.getAllContacts();
+    super.didChangeDependencies();
+  }
   @override
   Widget build(BuildContext context) {
-    provider.getAllContacts();
     return Scaffold(
       appBar: AppBar(
         title: Text('Contact List')
       ),
       body: ListView.builder(
-          itemCount: provider.contacts.length,
+          itemCount: _contactProvider.contacts.length,
           itemBuilder: (context, index){
-            final contact = provider.contacts[index];
+            final contact = _contactProvider.contacts[index];
             return ListTile(
               title: Text(contact.contactName),
               subtitle: Text(contact.companyName),

@@ -21,6 +21,13 @@ class dbSqlLiteHelper{
                    emailAddress: "chester@mail.com",
                    webSite: "chester.com",
                    streetAddress: "LA, USA"),
+
+      ContactModel(contactName: "Chester",
+                   companyName: "LP",
+                   mobileNumber: "0455454",
+                   emailAddress: "chester@mail.com",
+                   webSite: "chester.com",
+                   streetAddress: "LA, USA"),
     ];
  }
 

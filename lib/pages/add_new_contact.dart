@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:visiting_card/helpers/validation_error_message.dart';
 import 'package:visiting_card/models/contact_model.dart';
 import 'package:visiting_card/providers/contact_provider.dart';
@@ -166,7 +167,7 @@ class _AddNewContactState extends State<AddNewContact> {
           streetAddress: _contactAddressController.text);
 
       final provider = contactProvider();
-      provider.addContact(contact);
+      Provider.of <contactProvider>(context, listen: false).addContact(contact);
       Navigator.pop(context);
     }
   }
